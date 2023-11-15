@@ -6,7 +6,7 @@
 /*   By: yboutsli <yboutsli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 18:33:16 by yboutsli          #+#    #+#             */
-/*   Updated: 2023/11/15 16:51:11 by yboutsli         ###   ########.fr       */
+/*   Updated: 2023/11/15 17:23:55 by yboutsli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,6 @@ int ft_printf(const char *format, ...)
 		{
 			if (format[i + 1])
 				x = ft_printforma(args, format[i++ + 1]);
-			else
-				x = -1;
 		}
 		else
 			x = ft_putchar(format[i]);
