@@ -1,4 +1,4 @@
-SRCS = ft_string.c
+SRCS = ft_string.c ft_printf.c
 
 CFLAGS = -Wall -Wextra -Werror
 

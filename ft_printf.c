@@ -6,13 +6,13 @@
 /*   By: yboutsli <yboutsli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 18:33:16 by yboutsli          #+#    #+#             */
-/*   Updated: 2023/11/14 23:25:14 by yboutsli         ###   ########.fr       */
+/*   Updated: 2023/11/15 16:51:11 by yboutsli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
-#include <stdio.h>
+
 
 
 int	ft_printforma(va_list args, const char format)
@@ -27,12 +27,20 @@ int	ft_printforma(va_list args, const char format)
 		x = ft_putchar(va_arg(args, int));
 	else if (format == 's')
 		x = ft_putstr(va_arg(args, char*));
+	else if (format == 'd' || format == 'i')
+		x = ft_putnbr(va_arg(args ,int));
+	else if (format == 'x' || format == 'X')
+		x = ft_putnbrhexa(va_arg(args, unsigned int), format);
+	else if (format == 'p')
+		x = ft_putpointer(va_arg(args, unsigned long));
+	else if (format == 'u')
+		x = ft_putunsigned(va_arg(args, unsigned int));
 	else
 		x = ft_putchar(format);
-	if (x != -1)
-		count += x;
-	else
+	if (x == -1)
 		return (-1);
+	else
+		count += x;
 	return (count);
 }
 
@@ -40,9 +48,9 @@ int	ft_printforma(va_list args, const char format)
 int ft_printf(const char *format, ...)
 {
 	va_list args;
-	int count;
-	int x;
-	int	i;
+	int 	count;
+	int		x;
+	int		i;
 
 	count = 0;
 	va_start(args, format);
@@ -53,29 +61,20 @@ int ft_printf(const char *format, ...)
 		{
 			if (format[i + 1])
 				x = ft_printforma(args, format[i++ + 1]);
+			else
+				x = -1;
 		}
 		else
 			x = ft_putchar(format[i]);
-		
-		if (x != -1)
-			count += x;
-		else
+		if (x == -1)
 		{
 			va_end(args);
 			return (-1);
 		}
+		else
+			count += x;	
 		i++;
 	}
 	va_end(args);
 	return (count);
-}
-
-int main()
-{
-	int b = ft_printf("%s\n","hello world");
-	int a = printf("%s\n","hello world");
-	printf("%d : %d \n", a, b);
-// 	int count = 0;
-// 	int a = ft_putnbr(500,&count);
-// 	printf ("\n%d\n",a);
 }
