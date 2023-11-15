@@ -6,7 +6,7 @@
 /*   By: yboutsli <yboutsli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 21:30:03 by yboutsli          #+#    #+#             */
-/*   Updated: 2023/11/15 17:33:52 by yboutsli         ###   ########.fr       */
+/*   Updated: 2023/11/15 17:39:38 by yboutsli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 static int check(int x, int *count)
 {
-	if (x != -1)
-		*count += x;
-	else
+	if (x == -1)
 		return (1);
+	else
+		*count += x;
 	return (0);
 }
 
@@ -31,7 +31,12 @@ static int check2(int a, int b, int *count)
 
 int	ft_putchar(unsigned int c)
 {
-	return(write(1, &c, 1));
+	int res;
+
+	res = write(1, &c, 1);
+	if (res == -1)
+		return(-1);
+	return(res);
 }
 
 int	ft_putstr(char *str)
