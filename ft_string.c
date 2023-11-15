@@ -6,7 +6,7 @@
 /*   By: yboutsli <yboutsli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 21:30:03 by yboutsli          #+#    #+#             */
-/*   Updated: 2023/11/15 18:25:56 by yboutsli         ###   ########.fr       */
+/*   Updated: 2023/11/15 20:48:14 by yboutsli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,16 @@ static int check2(int a, int b, int *count)
 	return (0);
 }
 
-int	ft_putchar(unsigned int c)
+int	ft_putchar(unsigned char c)
 {
 	int res;
-
+	extern int g_i;
 	res = write(1, &c, 1);
 	if (res == -1)
-		return(-1);
+	{
+		g_i = -1;
+		return (-1);
+	}
 	return(res);
 }
 

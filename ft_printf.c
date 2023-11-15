@@ -6,14 +6,14 @@
 /*   By: yboutsli <yboutsli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 18:33:16 by yboutsli          #+#    #+#             */
-/*   Updated: 2023/11/15 17:34:15 by yboutsli         ###   ########.fr       */
+/*   Updated: 2023/11/15 19:13:54 by yboutsli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
 
-
+int g_i;
 
 int	ft_printforma(va_list args, const char format)
 {
@@ -37,7 +37,7 @@ int	ft_printforma(va_list args, const char format)
 		x = ft_putunsigned(va_arg(args, unsigned int));
 	else
 		x = ft_putchar(format);
-	if (x == -1)
+	if (x == -1 || g_i == -1)
 		return (-1);
 	else
 		count += x;
@@ -51,7 +51,7 @@ int ft_printf(const char *format, ...)
 	int 	count;
 	int		x;
 	int		i;
-
+	g_i = 0;
 	count = 0;
 	va_start(args, format);
     i = 0;
