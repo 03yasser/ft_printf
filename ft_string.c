@@ -6,7 +6,7 @@
 /*   By: yboutsli <yboutsli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 21:30:03 by yboutsli          #+#    #+#             */
-/*   Updated: 2023/11/16 12:25:32 by yboutsli         ###   ########.fr       */
+/*   Updated: 2023/11/16 12:30:06 by yboutsli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ int ft_putpointer(unsigned long adress)
 	count = 0;
 	if (check(ft_putstr("0x"), &count))
 		return (-1);
-	if (check(ft_putnbrhexa(adress, 'x'), &count) == -1)
+	if (check(ft_putnbrhexa(adress, 'x'), &count))
 		return (-1);
 	return (count);
 }
