@@ -6,7 +6,7 @@
 /*   By: yboutsli <yboutsli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 21:30:03 by yboutsli          #+#    #+#             */
-/*   Updated: 2023/11/15 20:48:14 by yboutsli         ###   ########.fr       */
+/*   Updated: 2023/11/16 12:00:58 by yboutsli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static int check(int x, int *count)
 {
-	if (x == -1)
+	if (x < 0)
 		return (1);
 	else
 		*count += x;
@@ -32,13 +32,7 @@ static int check2(int a, int b, int *count)
 int	ft_putchar(unsigned char c)
 {
 	int res;
-	extern int g_i;
 	res = write(1, &c, 1);
-	if (res == -1)
-	{
-		g_i = -1;
-		return (-1);
-	}
 	return(res);
 }
 
@@ -53,15 +47,11 @@ int	ft_putstr(char *str)
 	i = 0;
 	if (str == NULL)
 	{
-		x = write(1, "(null)", 6);
-		if ( x == -1)
-			return (-1);
-		return (x);
+		return (write(1, "(null)", 6));
 	}
 	while (str[i])
 	{
-		x = ft_putchar(str[i++]);
-		if (check(x, &count))
+		if (check(ft_putchar(str[i++]), &count))
 			return (-1);
 	}
 	return (count);
@@ -140,11 +130,8 @@ int ft_putpointer(unsigned long adress)
 	count = 0;
 	if (check(ft_putstr("0x"), &count))
 		return (-1);
-	x = ft_putnbrhexa(adress, 'x');
-	if (x == -1)
+	if (check(ft_putnbrhexa(adress, 'x'), &count) == -1)
 		return (-1);
-	else
-		count += x;
 	return (count);
 }
 int ft_putunsigned(unsigned int nb)

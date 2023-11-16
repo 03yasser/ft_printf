@@ -6,14 +6,12 @@
 /*   By: yboutsli <yboutsli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 18:33:16 by yboutsli          #+#    #+#             */
-/*   Updated: 2023/11/15 19:13:54 by yboutsli         ###   ########.fr       */
+/*   Updated: 2023/11/16 11:56:10 by yboutsli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
-
-int g_i;
 
 int	ft_printforma(va_list args, const char format)
 {
@@ -37,31 +35,24 @@ int	ft_printforma(va_list args, const char format)
 		x = ft_putunsigned(va_arg(args, unsigned int));
 	else
 		x = ft_putchar(format);
-	if (x == -1 || g_i == -1)
-		return (-1);
-	else
-		count += x;
-	return (count);
+	return (x);
 }
 
 
-int ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
-	va_list args;
+	va_list	args;
 	int 	count;
 	int		x;
 	int		i;
-	g_i = 0;
+
 	count = 0;
 	va_start(args, format);
-    i = 0;
-    while (format[i])
-    {
-        if (format[i] == '%')
-		{
-			if (format[i + 1])
-				x = ft_printforma(args, format[i++ + 1]);
-		}
+	i = 0;
+	while (format[i])
+	{
+		if (format[i] == '%' && format[i + 1])
+			x = ft_printforma(args, format[i++ + 1]);
 		else
 			x = ft_putchar(format[i]);
 		if (x == -1)
