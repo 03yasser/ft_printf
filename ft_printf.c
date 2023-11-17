@@ -6,12 +6,11 @@
 /*   By: yboutsli <yboutsli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 18:33:16 by yboutsli          #+#    #+#             */
-/*   Updated: 2023/11/16 12:35:18 by yboutsli         ###   ########.fr       */
+/*   Updated: 2023/11/17 10:36:58 by yboutsli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
 
 int	ft_printforma(va_list args, const char format)
 {
@@ -22,11 +21,11 @@ int	ft_printforma(va_list args, const char format)
 	if (format == '%')
 		x = ft_putchar(format);
 	else if (format == 'c')
-		x = ft_putchar(va_arg(args, int));
+		x = ft_putchar(va_arg(args, unsigned int));
 	else if (format == 's')
-		x = ft_putstr(va_arg(args, char*));
+		x = ft_putstr(va_arg(args, char *));
 	else if (format == 'd' || format == 'i')
-		x = ft_putnbr(va_arg(args ,int));
+		x = ft_putnbr(va_arg(args, int));
 	else if (format == 'x' || format == 'X')
 		x = ft_putnbrhexa(va_arg(args, unsigned int), format);
 	else if (format == 'p')
@@ -38,11 +37,10 @@ int	ft_printforma(va_list args, const char format)
 	return (x);
 }
 
-
 int	ft_printf(const char *format, ...)
 {
 	va_list	args;
-	int 	count;
+	int		count;
 	int		x;
 	int		i;
 
@@ -61,7 +59,7 @@ int	ft_printf(const char *format, ...)
 			return (-1);
 		}
 		else
-			count += x;	
+			count += x;
 		i++;
 	}
 	va_end(args);

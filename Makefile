@@ -1,4 +1,4 @@
-SRCS = ft_string.c ft_printf.c
+SRCS = ft_printf.c ft_file1.c ft_file2.c
 
 CFLAGS = -Wall -Wextra -Werror
 
@@ -9,7 +9,7 @@ SRCS_OBJ = $(SRCS:.c=.o)
 %.o:%.c
 	cc $(CFLAGS) -c $^ -o $@
 
-all: $(NAME)
+all: $(NAME) ft_printf.h
 
 $(NAME): $(SRCS_OBJ)
 	ar -rc $(NAME) $(SRCS_OBJ)
