@@ -6,7 +6,7 @@
 /*   By: yboutsli <yboutsli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 18:30:35 by yboutsli          #+#    #+#             */
-/*   Updated: 2023/11/17 10:26:57 by yboutsli         ###   ########.fr       */
+/*   Updated: 2023/11/22 22:47:14 by yboutsli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,8 @@
 
 # define FT_PRINTF_H
 # include <unistd.h>
-# include <stdio.h>
-# include <unistd.h>
 # include <stdlib.h>
 # include <stdarg.h>
-# include <limits.h>
 
 int	ft_printf(const char *format, ...);
 int	ft_putstr(char *str);
@@ -31,5 +28,4 @@ int	ft_putpointer(unsigned long adress);
 int	ft_putunsigned(unsigned int nb);
 int	check(int x, int *count);
 int	check2(int a, int b, int *count);
-
 #endif

@@ -6,12 +6,12 @@ NAME = libftprintf.a
 
 SRCS_OBJ = $(SRCS:.c=.o)
 
-%.o:%.c
+%.o:%.c 
 	cc $(CFLAGS) -c $^ -o $@
 
-all: $(NAME) ft_printf.h
+all: $(NAME)
 
-$(NAME): $(SRCS_OBJ)
+$(NAME): $(SRCS_OBJ) ft_printf.h
 	ar -rc $(NAME) $(SRCS_OBJ)
 clean : 
 	rm -rf $(SRCS_OBJ)
