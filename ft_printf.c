@@ -6,11 +6,12 @@
 /*   By: yboutsli <yboutsli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 18:33:16 by yboutsli          #+#    #+#             */
-/*   Updated: 2023/11/17 10:36:58 by yboutsli         ###   ########.fr       */
+/*   Updated: 2023/11/23 23:47:49 by yboutsli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 int	ft_printforma(va_list args, const char format)
 {
@@ -45,22 +46,22 @@ int	ft_printf(const char *format, ...)
 	int		i;
 
 	count = 0;
+	if (!format)
+		return (0);
 	va_start(args, format);
-	i = 0;
-	while (format[i])
+	i = -1;
+	while (format[++i])
 	{
+		if (format[i] == '%' && !format[i + 1])
+			return (count);
 		if (format[i] == '%' && format[i + 1])
 			x = ft_printforma(args, format[i++ + 1]);
 		else
 			x = ft_putchar(format[i]);
 		if (x < 0)
-		{
-			va_end(args);
+			x = -1;
+		if (check(x, &count))
 			return (-1);
-		}
-		else
-			count += x;
-		i++;
 	}
 	va_end(args);
 	return (count);
