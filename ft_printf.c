@@ -6,7 +6,7 @@
 /*   By: yboutsli <yboutsli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 18:33:16 by yboutsli          #+#    #+#             */
-/*   Updated: 2023/11/23 23:47:49 by yboutsli         ###   ########.fr       */
+/*   Updated: 2023/11/24 10:37:30 by yboutsli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	ft_printforma(va_list args, const char format)
 	int	count;
 	int	x;
 
+	x = 0;
 	count = 0;
 	if (format == '%')
 		x = ft_putchar(format);
@@ -33,8 +34,8 @@ int	ft_printforma(va_list args, const char format)
 		x = ft_putpointer(va_arg(args, unsigned long));
 	else if (format == 'u')
 		x = ft_putunsigned(va_arg(args, unsigned int));
-	else
-		x = ft_putchar(format);
+	else if (format == '%')
+		x = ft_putchar('%');
 	return (x);
 }
 
@@ -58,8 +59,6 @@ int	ft_printf(const char *format, ...)
 			x = ft_printforma(args, format[i++ + 1]);
 		else
 			x = ft_putchar(format[i]);
-		if (x < 0)
-			x = -1;
 		if (check(x, &count))
 			return (-1);
 	}

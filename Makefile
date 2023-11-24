@@ -6,7 +6,7 @@
 #    By: yboutsli <yboutsli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 22:59:58 by yboutsli          #+#    #+#              #
-#    Updated: 2023/11/23 23:47:10 by yboutsli         ###   ########.fr        #
+#    Updated: 2023/11/24 10:16:47 by yboutsli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,3 +29,6 @@ clean :
 	rm -rf $(SRCS_OBJ)
 fclean :
 	rm -rf $(SRCS_OBJ) $(NAME)
+re : fclean all
+
+.PHONY:		all clean fclean re
